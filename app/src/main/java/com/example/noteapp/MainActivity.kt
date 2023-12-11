@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -25,6 +26,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.noteapp.screens.NoteListScreen
 import com.example.noteapp.ui.theme.NoteAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -37,43 +39,10 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoginScreen()
+                    NoteListScreen()
                 }
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun LoginScreen(){
-    var username by remember {mutableStateOf("")}
-    var password by remember { mutableStateOf("") }
-
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
-        modifier = Modifier.padding(all=8.dp)
-    ){
-        Text(
-            text = "Simple Login Page!",
-            fontSize = 20.sp,
-            textAlign = TextAlign.Center,
-        )
-        TextField(
-            value = username,
-            onValueChange = {usernameInput -> username = usernameInput},
-            label = {Text("Username")},
-            modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp)
-        )
-        TextField(
-            value = password,
-            onValueChange = {pwdInput -> password = pwdInput},
-            label = {Text("Password")},
-            visualTransformation = PasswordVisualTransformation(),
-            modifier = Modifier.fillMaxWidth().padding(bottom = 10.dp)
-        )
-        Button(onClick = {}){
-            Text(text="Login")
-        }
-    }
-}
