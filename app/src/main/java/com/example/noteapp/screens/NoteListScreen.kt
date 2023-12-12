@@ -21,11 +21,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.example.noteapp.components.NoteItem
+
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NoteListScreen(){
+fun NoteListScreen(navController: NavController){
 
     Scaffold(
         topBar = {
@@ -65,7 +68,7 @@ fun NoteListScreen(){
             }
         },
         floatingActionButton = {
-            FloatingActionButton(onClick = { /*TODO*/ }) {
+            FloatingActionButton(onClick = { navController.navigate("add-note") }) {
                 Icon(
                     imageVector = Icons.Default.Add,
                     contentDescription = "Add New Note"
@@ -75,6 +78,7 @@ fun NoteListScreen(){
     )
 }
 
+
 @Preview
 @Composable
 fun NoteListScreenPreview(){
@@ -82,6 +86,6 @@ fun NoteListScreenPreview(){
         modifier = Modifier.fillMaxSize(),
         color = MaterialTheme.colorScheme.background
     ) {
-        NoteListScreen()
+        //NoteListScreen()
     }
 }
